@@ -46,7 +46,9 @@ module MathDecidr {
 
             if (this.equationsRaw) {
                 for (i in this.equationsRaw) {
-                    this.addEquation(i, this.equationsRaw[i]);
+                    if (this.equationsRaw.hasOwnProperty(i)) {
+                        this.addEquation(i, this.equationsRaw[i]);
+                    }
                 }
             }
         }
@@ -86,16 +88,18 @@ module MathDecidr {
         }
 
         /**
+         * @param {String} name
          * @return {Function} The equation under the given name.
          */
-        getEquation(name) {
+        getEquation(name: string): IEquation {
             return this.equations[name];
         }
 
         /**
+         * @param {String} name
          * @return {Function} The raw equation under the given name.
          */
-        getRawEquation(name) {
+        getRawEquation(name: string): IEquation {
             return this.equationsRaw[name];
         }
 
