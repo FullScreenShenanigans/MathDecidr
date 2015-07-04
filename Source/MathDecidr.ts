@@ -35,7 +35,7 @@ module MathDecidr {
         /**
          * @param {IMathDecidrSettings} settings
          */
-        constructor(settings: IMathDecidrSettings) {
+        constructor(settings: IMathDecidrSettings = {}) {
             var i: string;
 
             this.NumberMaker = settings.NumberMaker || new NumberMakr.NumberMakr();
@@ -83,7 +83,7 @@ module MathDecidr {
         /**
          * @return {Object} The raw equations, unbound.
          */
-        getequationsRaw(): IEquationContainer {
+        getEquationsRaw(): IEquationContainer {
             return this.equationsRaw;
         }
 
