@@ -11,13 +11,25 @@ module MathDecidr {
     "use strict";
 
     export class MathDecidr implements IMathDecidr {
-        private NumberMaker;
+        /**
+         * 
+         */
+        private NumberMaker: NumberMakr.INumberMakr;
 
-        private constants;
+        /**
+         * 
+         */
+        private constants: any;
 
-        private equations;
+        /**
+         * 
+         */
+        private equations: IEquationContainer;
 
-        private rawEquations;
+        /**
+         * 
+         */
+        private rawEquations: IEquationContainer;
 
         /**
          * 
