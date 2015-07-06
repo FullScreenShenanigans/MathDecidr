@@ -1,7 +1,4 @@
-// @echo '/// <reference path="NumberMakr-0.2.2.ts" />'
-
 // @ifdef INCLUDE_DEFINITIONS
-/// <reference path="References/NumberMakr-0.2.2.ts" />
 /// <reference path="MathDecidr.d.ts" />
 // @endif
 
@@ -11,11 +8,6 @@ module MathDecidr {
     "use strict";
 
     export class MathDecidr implements IMathDecidr {
-        /**
-         * A NumberMakr to generate random numbers when needed.
-         */
-        private NumberMaker: NumberMakr.INumberMakr;
-
         /**
          * Useful constants the MathDecidr may use in equations.
          */
@@ -37,8 +29,6 @@ module MathDecidr {
          */
         constructor(settings: IMathDecidrSettings = {}) {
             var i: string;
-
-            this.NumberMaker = settings.NumberMaker || new NumberMakr.NumberMakr();
 
             this.constants = settings.constants || {};
             this.equations = {};
@@ -83,7 +73,7 @@ module MathDecidr {
         /**
          * @return {Object} The raw equations, unbound.
          */
-        getEquationsRaw(): IEquationContainer {
+        getRawEquations(): IEquationContainer {
             return this.equationsRaw;
         }
 
@@ -125,7 +115,7 @@ module MathDecidr {
          */
         addEquation(name: string, value: IEquation): void {
             this.equationsRaw[name] = value;
-            this.equations[name] = value.bind(this, this.NumberMaker, this.constants, this.equations);
+            this.equations[name] = value.bind(this, this.constants, this.equations);
         }
 
 

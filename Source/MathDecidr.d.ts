@@ -1,7 +1,6 @@
 declare module MathDecidr {
     export interface IEquation {
-        (NumberMaker: NumberMakr.INumberMakr,
-        constants: any,
+        (constants: any,
         equations: IEquationContainer,
         ...args: any[]): any;
     }
@@ -11,7 +10,6 @@ declare module MathDecidr {
     }
 
     export interface IMathDecidrSettings {
-        NumberMaker?: NumberMakr.INumberMakr;
         constants?: any;
         equations?: {
             [i: string]: IEquation;
@@ -22,7 +20,7 @@ declare module MathDecidr {
         getConstants(): any;
         getConstant(name: string): any;
         getEquations(): IEquationContainer;
-        getEquationsRaw(): IEquationContainer;
+        getRawEquations(): IEquationContainer;
         getEquation(name: string): IEquation;
         getRawEquation(name: string): IEquation;
         addConstant(name: string, value: any): void;
