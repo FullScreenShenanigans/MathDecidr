@@ -7,6 +7,10 @@
 module MathDecidr {
     "use strict";
 
+    /**
+     * A computation utility to automate running common equations with access
+     * to a set of constant values.
+     */
     export class MathDecidr implements IMathDecidr {
         /**
          * Useful constants the MathDecidr may use in equations.
@@ -25,7 +29,9 @@ module MathDecidr {
         private equationsRaw: IEquationContainer;
 
         /**
-         * @param {IMathDecidrSettings} settings
+         * Initializes a new instance of the MathDecidr class.
+         * 
+         * @param [settings]   Settings to be used for initialization.
          */
         constructor(settings: IMathDecidrSettings = {}) {
             var i: string;
@@ -48,46 +54,46 @@ module MathDecidr {
         */
 
         /**
-         * @return {Object} Useful constants the MathDecidr may use in equations.
+         * @returns Useful constants the MathDecidr may use in equations.
          */
         getConstants(): any {
             return this.constants;
         }
 
         /**
-         * @param {String} name   The name of a constant to return.
-         * @return {Mixed} The value for the requested constant.
+         * @param name   The name of a constant to return.
+         * @returns The requested constant.
          */
         getConstant(name: string): any {
             return this.constants[name];
         }
 
         /**
-         * @return {Object} Stored equations with the internal members bound as 
-         *                  their arguments.
+         * @returns Stored equations with the internal members bound as 
+         *          their arguments.
          */
         getEquations(): IEquationContainer {
             return this.equations;
         }
 
         /**
-         * @return {Object} The raw equations, unbound.
+         * @returns The raw stored equations, unbound.
          */
         getRawEquations(): IEquationContainer {
             return this.equationsRaw;
         }
 
         /**
-         * @param {String} name
-         * @return {Function} The equation under the given name.
+         * @param name   The name of the equation to return.
+         * @returns The equation under the given name.
          */
         getEquation(name: string): IEquation {
             return this.equations[name];
         }
 
         /**
-         * @param {String} name
-         * @return {Function} The raw equation under the given name.
+         * @param name   The name of the equation to return.
+         * @returns The raw equation under the given name.
          */
         getRawEquation(name: string): IEquation {
             return this.equationsRaw[name];
@@ -100,8 +106,8 @@ module MathDecidr {
         /**
          * Adds a constant of the given name and value.
          * 
-         * @param {String} name
-         * @param {Mixed} value
+         * @param name   The name of the constant to add.
+         * @param value   A value for the constant.
          */
         addConstant(name: string, value: any): void {
             this.constants[name] = value;
@@ -110,8 +116,8 @@ module MathDecidr {
         /**
          * Adds an equation Function under the given name.
          * 
-         * @param {String} name
-         * @param {Function} value
+         * @param name   The name of the equation to add.
+         * @param value   A value for the equation.
          */
         addEquation(name: string, value: IEquation): void {
             this.equationsRaw[name] = value;
@@ -125,8 +131,9 @@ module MathDecidr {
         /**
          * Runs a stored equation with any number of arguments, returning the result.
          * 
-         * @param {String} name   The name of the equation to run.
-         * @param {Mixed} ...args   Any arguments to pass to the equation.
+         * @param name   The name of the equation to run.
+         * @param args   Any arguments to pass to the equation.
+         * @returns The result of the equation.
          */
         compute(name: string, ...args: any[]): any {
             return this.equations[name].apply(this, Array.prototype.slice.call(arguments, 1));

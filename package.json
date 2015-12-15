@@ -1,6 +1,6 @@
 {
     "name": "MathDecidr",
-    "description": "",
+    "description": "A computation utility to automate running common equations with access to a set of constant values.",
     "version": "0.2.0",
     "author": {
         "name": "Josh Goldberg",
