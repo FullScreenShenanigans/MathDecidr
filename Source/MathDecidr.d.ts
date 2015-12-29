@@ -5,7 +5,7 @@ declare module MathDecidr {
     export interface IConstants {
         [i: string]: any;
     }
-    
+
     /**
      * A calculation Function.
      * 
@@ -16,14 +16,14 @@ declare module MathDecidr {
     export interface IEquation {
         (constants: IConstants, equations: IEquationContainer, ...args: any[]): any;
     }
-    
+
     /**
      * A collection of equations, keyed by name.
      */
     export interface IEquationContainer {
         [i: string]: IEquation;
     }
-    
+
     /**
      * Settings to initialize a new IMathDecidr.
      */
@@ -38,7 +38,7 @@ declare module MathDecidr {
          */
         equations?: IEquationContainer;
     }
-    
+
     /**
      * A computation utility to automate running common equations with access
      * to a set of constant values.
