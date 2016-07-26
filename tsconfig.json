@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "target": "es3",
+        "noImplicitAny": true,
+        "declaration": false,
+        "outDir": "dist"
+    },
+    "files": [
+        "src/IMathDecidr.ts",
+        "src/MathDecidr.ts"
+    ]
+}

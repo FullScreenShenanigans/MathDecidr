@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "es3",
+        "declaration": false
+    },
+    "files": [
+        "utils/MochaLoader.ts",
+        "utils/mocks.ts",
+        "MathDecidr/compute.ts"
+    ]
+}
