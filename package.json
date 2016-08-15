@@ -1,20 +1,20 @@
 {
-    "name": "mathdecidr",
-    "description": "A computation utility to automate running common equations with access to a set of constant values.",
-    "version": "0.5.0",
-    "author": {
-        "name": "Josh Goldberg",
-        "email": "josh@fullscreenmario.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "ssh://git@github.com:FullScreenShenanigans/MathDecidr.git"
-    },
-    "bugs": {
-        "url": "https://github.com/FullScreenShenanigans/MathDecidr/issues"
-    },
-    "license": "MIT",
-    "devDependencies": {
-        "gulp-shenanigans": "^0.3.1"
-    }
+  "name": "mathdecidr",
+  "description": "Computation runner for common equations with access to a set of constant values.",
+  "version": "0.5.1",
+  "author": {
+    "name": "Josh Goldberg",
+    "email": "joshuakgoldberg@outlook.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:FullScreenShenanigans/MathDecidr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FullScreenShenanigans/MathDecidr/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "gulp-shenanigans": "^0.5.1"
+  }
 }
