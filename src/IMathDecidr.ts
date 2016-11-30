@@ -8,12 +8,10 @@ export interface IConstants {
 /**
  * A calculation Function.
  * 
- * @param constants   Useful constants from a MathDecidr.
- * @param equations   Other calculation Functions stored in the MathDecidr.
  * @param args   Any other arguments to pass to the equation.
  */
 export interface IEquation {
-    (constants: IConstants, equations: IEquations, ...args: any[]): any;
+    (this: IMathDecidr, ...args: any[]): any;
 }
 
 /**
@@ -30,7 +28,7 @@ export interface IMathDecidrSettings {
     /**
      * Constants the MathDecidr may use in equations.
      */
-    constants?: any;
+    constants?: IConstants;
 
     /**
      * Calculation Functions, keyed by name
@@ -44,21 +42,20 @@ export interface IMathDecidrSettings {
  */
 export interface IMathDecidr {
     /**
-     * @returns Useful constants the MathDecidr may use in equations.
+     * Useful constants the IMathDecidr may use in equations.
      */
-    getConstants(): any;
+    readonly constants: IConstants;
+
+    /**
+     * Stored equations bound to the IMathDecidr.
+     */
+    readonly equations: IEquations;
 
     /**
      * @param name   The name of a constant to return.
      * @returns The requested constant.
      */
     getConstant(name: string): any;
-
-    /**
-     * @returns Stored equations with the internal members bound as 
-     *          their arguments.
-     */
-    getEquations(): IEquations;
 
     /**
      * @returns The raw stored equations, unbound.
@@ -81,17 +78,17 @@ export interface IMathDecidr {
      * Adds a constant of the given name and value.
      * 
      * @param name   The name of the constant to add.
-     * @param value   A value for the constant.
+     * @param constant   A value for the constant.
      */
-    addConstant(name: string, value: any): void;
+    addConstant(name: string, constant: any): void;
 
     /**
      * Adds an equation Function under the given name.
      * 
      * @param name   The name of the equation to add.
-     * @param value   A value for the equation.
+     * @param equation   A value for the equation.
      */
-    addEquation(name: string, value: IEquation): void;
+    addEquation(name: string, equation: IEquation): void;
 
     /**
      * Runs a stored equation with any number of arguments, returning the result.

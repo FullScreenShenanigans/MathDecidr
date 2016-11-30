@@ -10,18 +10,17 @@ export class MathDecidr implements IMathDecidr {
     /**
      * Useful constants the MathDecidr may use in equations.
      */
-    private constants: IConstants;
+    public readonly constants: IConstants;
 
     /**
-     * Stored equations users and other equations may access, with the internal
-     * members bound as their arguments.
+     * Stored equations bound to the MathDecidr.
      */
-    private equations: IEquations;
+    public readonly equations: IEquations;
 
     /**
      * The raw equations, unbound.
      */
-    private equationsRaw: IEquations;
+    private rawEquations: IEquations;
 
     /**
      * Initializes a new instance of the MathDecidr class.
@@ -31,22 +30,15 @@ export class MathDecidr implements IMathDecidr {
     constructor(settings: IMathDecidrSettings = {}) {
         this.constants = settings.constants || {};
         this.equations = {};
-        this.equationsRaw = settings.equations || {};
+        this.rawEquations = settings.equations || {};
 
-        if (this.equationsRaw) {
-            for (const i in this.equationsRaw) {
-                if (this.equationsRaw.hasOwnProperty(i)) {
-                    this.addEquation(i, this.equationsRaw[i]);
+        if (this.rawEquations) {
+            for (const i in this.rawEquations) {
+                if (this.rawEquations.hasOwnProperty(i)) {
+                    this.addEquation(i, this.rawEquations[i]);
                 }
             }
         }
-    }
-
-    /**
-     * @returns Useful constants the MathDecidr may use in equations.
-     */
-    public getConstants(): any {
-        return this.constants;
     }
 
     /**
@@ -58,18 +50,10 @@ export class MathDecidr implements IMathDecidr {
     }
 
     /**
-     * @returns Stored equations with the internal members bound as 
-     *          their arguments.
-     */
-    public getEquations(): IEquations {
-        return this.equations;
-    }
-
-    /**
      * @returns The raw stored equations, unbound.
      */
     public getRawEquations(): IEquations {
-        return this.equationsRaw;
+        return this.rawEquations;
     }
 
     /**
@@ -85,28 +69,28 @@ export class MathDecidr implements IMathDecidr {
      * @returns The raw equation under the given name.
      */
     public getRawEquation(name: string): IEquation {
-        return this.equationsRaw[name];
+        return this.rawEquations[name];
     }
 
     /**
      * Adds a constant of the given name and value.
      * 
      * @param name   The name of the constant to add.
-     * @param value   A value for the constant.
+     * @param constant   A value for the constant.
      */
-    public addConstant(name: string, value: any): void {
-        this.constants[name] = value;
+    public addConstant(name: string, constant: any): void {
+        this.constants[name] = constant;
     }
 
     /**
      * Adds an equation Function under the given name.
      * 
      * @param name   The name of the equation to add.
-     * @param value   A value for the equation.
+     * @param equation   A value for the equation.
      */
-    public addEquation(name: string, value: IEquation): void {
-        this.equationsRaw[name] = value;
-        this.equations[name] = value.bind(this, this.constants, this.equations);
+    public addEquation(name: string, equation: IEquation): void {
+        this.rawEquations[name] = equation;
+        this.equations[name] = equation.bind(this);
     }
 
     /**
@@ -117,6 +101,6 @@ export class MathDecidr implements IMathDecidr {
      * @returns The result of the equation.
      */
     public compute(name: string, ...args: any[]): any {
-        return this.equations[name].apply(this, Array.prototype.slice.call(arguments, 1));
+        return this.equations[name].apply(this, args);
     }
 }
