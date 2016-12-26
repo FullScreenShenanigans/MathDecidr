@@ -1,7 +1,7 @@
 {
   "name": "mathdecidr",
   "description": "Computation runner for common equations with access to a set of constant values.",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "author": {
     "name": "Josh Goldberg",
     "email": "joshuakgoldberg@outlook.com"
