@@ -1,4 +1,6 @@
 # MathDecidr
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/FullScreenShenanigans/MathDecidr.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/FullScreenShenanigans/MathDecidr.svg?branch=master)](https://travis-ci.org/FullScreenShenanigans/MathDecidr)
 [![NPM version](https://badge.fury.io/js/mathdecidr.svg)](http://badge.fury.io/js/mathdecidr)
 
